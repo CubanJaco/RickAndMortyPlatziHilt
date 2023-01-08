@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.android.extensions'
+    id 'org.jetbrains.kotlin.kapt'
+}
+
+android {
+    namespace 'com.example.rickandmortyplatzihilt'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.rickandmortyplatzihilt"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+
+    //KTX
+    implementation "androidx.core:core-ktx:$coreKTXVersion"
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Material
+    implementation "com.google.android.material:material:$materialVersion"
+
+    // View
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.cardview:cardview:$cardViewVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshLayoutVersion"
+    implementation "androidx.viewpager2:viewpager2:$viewPagerVersion"
+
+    //Project
+    implementation project(":data")
+    implementation project(":domain")
+    implementation project(":usecases")
+    implementation project(":framework:databasemanager")
+    implementation project(":framework:imagemanager")
+    implementation project(":framework:requestmanager")
+
+    //Reactive Streams
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$reactiveStreamsVersion"
+
+    //RxJava
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+}
