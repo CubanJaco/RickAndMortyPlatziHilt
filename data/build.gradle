@@ -2,6 +2,8 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.android.extensions'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -41,4 +43,13 @@ dependencies {
 
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }

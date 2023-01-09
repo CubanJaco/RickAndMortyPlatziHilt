@@ -1,13 +1,16 @@
 package com.example.rickandmortyplatzihilt.databasemanager
 
-import com.example.rickandmortyplatzihilt.domain.Character
 import com.example.rickandmortyplatzihilt.data.datasources.LocalCharacterDataSource
+import com.example.rickandmortyplatzihilt.domain.Character
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class CharacterRoomDataSource(
+@ViewModelScoped
+class CharacterRoomDataSource @Inject constructor(
     database: CharacterDatabase
 ): LocalCharacterDataSource {
 

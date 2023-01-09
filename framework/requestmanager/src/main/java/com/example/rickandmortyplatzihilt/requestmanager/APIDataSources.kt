@@ -2,13 +2,17 @@ package com.example.rickandmortyplatzihilt.requestmanager
 
 import com.example.rickandmortyplatzihilt.data.datasources.RemoteCharacterDataSource
 import com.example.rickandmortyplatzihilt.data.datasources.RemoteEpisodeDataSource
-import com.example.rickandmortyplatzihilt.domain.*
+import com.example.rickandmortyplatzihilt.domain.Character
+import com.example.rickandmortyplatzihilt.domain.Episode
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class CharacterRetrofitDataSource(
+@ViewModelScoped
+class CharacterRetrofitDataSource @Inject constructor(
     private val characterRequest: CharacterRequest
 ) : RemoteCharacterDataSource {
 
@@ -22,7 +26,7 @@ class CharacterRetrofitDataSource(
     }
 }
 
-class EpisodeRetrofitDataSource(
+class EpisodeRetrofitDataSource @Inject constructor(
     private val episodeRequest: EpisodeRequest
 ) : RemoteEpisodeDataSource {
 

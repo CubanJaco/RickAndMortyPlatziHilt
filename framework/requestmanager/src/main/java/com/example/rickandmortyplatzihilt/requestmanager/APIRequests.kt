@@ -1,10 +1,13 @@
 package com.example.rickandmortyplatzihilt.requestmanager
 
+import com.example.rickandmortyplatzihilt.requestmanager.di.BaseUrlQualifier
+import dagger.hilt.android.scopes.ViewModelScoped
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 abstract class BaseRequest<T: Any>(
     var baseUrl: String
@@ -28,6 +31,11 @@ abstract class BaseRequest<T: Any>(
         .build()
 }
 
-class CharacterRequest(baseUrl: String): BaseRequest<CharacterService>(baseUrl)
+@ViewModelScoped
+class CharacterRequest @Inject constructor(
+    @BaseUrlQualifier baseUrl: String
+): BaseRequest<CharacterService>(baseUrl)
 
-class EpisodeRequest(baseUrl: String): BaseRequest<EpisodeService>(baseUrl)
+class EpisodeRequest @Inject constructor(
+    @BaseUrlQualifier baseUrl: String
+): BaseRequest<EpisodeService>(baseUrl)

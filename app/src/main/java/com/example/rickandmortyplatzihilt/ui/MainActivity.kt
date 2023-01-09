@@ -1,19 +1,21 @@
 package com.example.rickandmortyplatzihilt.ui
 
-import com.example.rickandmortyplatzihilt.domain.Character
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.rickandmortyplatzihilt.R
 import com.example.rickandmortyplatzihilt.adapters.HomeNavigationStateAdapter
+import com.example.rickandmortyplatzihilt.domain.Character
 import com.example.rickandmortyplatzihilt.parcelables.toCharacterParcelable
 import com.example.rickandmortyplatzihilt.utils.Constants
 import com.example.rickandmortyplatzihilt.utils.startActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener,
     CharacterListFragment.OnCharacterListFragmentListener,
     FavoriteListFragment.OnFavoriteListFragmentListener {

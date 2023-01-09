@@ -2,13 +2,16 @@ package com.example.rickandmortyplatzihilt.data.repositories
 
 import com.example.rickandmortyplatzihilt.data.datasources.LocalCharacterDataSource
 import com.example.rickandmortyplatzihilt.data.datasources.RemoteCharacterDataSource
-import com.example.rickandmortyplatzihilt.usescases.repositories.CharacterRepository
 import com.example.rickandmortyplatzihilt.domain.Character
+import com.example.rickandmortyplatzihilt.usescases.repositories.CharacterRepository
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
+@ViewModelScoped
+class CharacterRepositoryImpl @Inject constructor(
     private val remoteCharacterDataSource: RemoteCharacterDataSource,
     private val localCharacterDataSource: LocalCharacterDataSource
 ) : CharacterRepository {

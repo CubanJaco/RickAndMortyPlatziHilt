@@ -1,15 +1,18 @@
 package com.example.rickandmortyplatzihilt.presentation
 
-import com.example.rickandmortyplatzihilt.domain.Character
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.rickandmortyplatzihilt.domain.Character
 import com.example.rickandmortyplatzihilt.presentation.CharacterListViewModel.CharacterListNavigation.*
 import com.example.rickandmortyplatzihilt.presentation.utils.Event
 import com.example.rickandmortyplatzihilt.usescases.GetAllCharactersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class CharacterListViewModel(
+@HiltViewModel
+class CharacterListViewModel @Inject constructor(
     private val getAllCharactersUseCase: GetAllCharactersUseCase
 ): ViewModel() {
 
